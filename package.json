@@ -1,0 +1,41 @@
+{
+  "name": "api-node-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "dev:server": "nodemon ./src/server.ts",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nestorinf/api-node-ts.git"
+  },
+  "author": "Nestor Infante",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nestorinf/api-node-ts/issues"
+  },
+  "homepage": "https://github.com/nestorinf/api-node-ts#readme",
+  "dependencies": {
+    "@prisma/client": "^4.15.0",
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "eslint": "^8.42.0",
+    "nodemon": "^2.0.22",
+    "prisma": "^4.15.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}

@@ -1,0 +1,19 @@
+
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/@prisma/client"
+}
+model Menu {
+    id Int @id @default(autoincrement())
+    name String @db.VarChar(255) @unique
+    parentId Int? 
+    status  Int  @default(0)
+
+    parent Menu? @relation("MenuChildren",fields: [parentId], references: [id])
+    children Menu[] @relation("MenuChildren")
+}

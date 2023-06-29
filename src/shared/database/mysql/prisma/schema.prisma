@@ -1,0 +1,44 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Menu {
+  id       Int    @id @default(autoincrement())
+  name     String @unique @db.VarChar(255)
+  parentId Int?
+  status   Int    @default(0)
+
+  parent   Menu?  @relation("MenuChildren", fields: [parentId], references: [id])
+  children Menu[] @relation("MenuChildren")
+
+  users MenuToUser[]
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique @db.VarChar(30)
+  name     String @db.VarChar(150)
+  lastname String @db.VarChar(150)
+  email    String @unique @db.VarChar(50)
+  password String @db.VarChar(2500)
+  status   Int    @default(0)
+
+  menus MenuToUser[]
+}
+
+model MenuToUser {
+  userId Int
+  menuId Int
+
+  user User @relation(fields: [userId], references: [id])
+  menu Menu @relation(fields: [menuId], references: [id])
+
+  assignedAt DateTime @default(now())
+
+  @@id([userId, menuId])
+}
