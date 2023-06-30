@@ -4,3 +4,4 @@
 
 # Deploy
 - Ejecutar npm run dev:server
+- Host deploy: http://localhost:4001 (Port Static)
